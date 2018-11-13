@@ -1,8 +1,8 @@
 class Intro {
     static render() {
         rootEl.innerHTML = `
-            <form id='name-form'>
-                <input id='name-input' placeholder='Enter your name' />
+            <form id='username-form'>
+                <input id='username-input' placeholder='Enter your name' />
             </form>
             <select>
                 <option>Pick a category...</option>
@@ -10,13 +10,13 @@ class Intro {
                 <option>Animals</option>
             </select>
         `
-        const formEl = rootEl.querySelector('#name-form')
+        const formEl = rootEl.querySelector('#username-form')
         formEl.addEventListener('submit', this.setUserListener)
     }
 
     static setUserListener(event) {
         event.preventDefault()
-        const inputEl = rootEl.querySelector('#name-input')
+        const inputEl = rootEl.querySelector('#username-input')
         State.username = inputEl.value
         event.target.reset()
     }
