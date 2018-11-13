@@ -1,0 +1,38 @@
+#photo-list, #photo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+
+.list-box {
+    
+}
+
+.grid-box {
+
+
+}
+
+/* .list-box, .grid-box {
+    background: url('https://images.unsplash.com/photo-1507614498949-edbabc86a14f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=65327334c38c6cc120f0be6aacbce03c&auto=format&fit=crop&w=700&q=80');
+    background-size: cover;
+} */
+
+.image-grid-box {
+    background-size: cover;
+}
+
+#game-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding: 0 5%;
+    height: 80vh;
+}
+
+@media screen and (max-width: 600px) {
+    #game-container {
+        grid-template-columns: 1fr;
+    }
+}
