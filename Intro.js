@@ -8,27 +8,27 @@ class Intro {
             </div>
 
             <div id="form">
-                <form id='name-form'>
-                    <input id='name-input' placeholder='Enter your name'/>
+                <form id='username-form'>
+                    <input id='name-input' placeholder='Type Your Name And Choose A Category Below'/>
                 </form>
             </div>
             
             <div id="category-container"> 
                 <div id="category-grid">
-                    <div id=landscape class="category-box">Landscape</div>
-                    <div id="animals" class="category-box">Animals</div>
-                    <div id="food" class="category-box">Food</div>
-                    <div id="roads" class="category-box">Roads</div>
-                    <div id="trees" class="category-box">Trees</div>
-                    <div id="coral" class="category-box">Coral</div>
-                    <div id="texture" class="category-box">Texture</div>
-                    <div id="street-art" class="category-box">Street Art</div>
-                    <div id="classic-cars" class="category-box">Classic Cars</div>
+                    <div id=landscape class="category-box"><p id="landscape">Landscape</p></div>
+                    <div id="animals" class="category-box"><p id="animals">Animals</p></div>
+                    <div id="food" class="category-box"><p id="food">Food</p></div>
+                    <div id="roads" class="category-box"><p id="roads">Roads</p></div>
+                    <div id="trees" class="category-box"><p id="trees">Trees</p></div>
+                    <div id="coral" class="category-box"><p id="coral">Coral</p></div>
+                    <div id="texture" class="category-box"><p id="texture">Texture</p></div>
+                    <div id="street-art" class="category-box"><p id="street art">Street Art</p></div>
+                    <div id="classic-cars" class="category-box"><p id="classic cars">Classic Cars</p></div>
                 </div>
             </div>
         `
-        const formEl = rootEl.querySelector('#username-form')
-        formEl.addEventListener('submit', this.setUserListener)
+        const categoryEl = rootEl.querySelector('#category-grid')
+        categoryEl.addEventListener('click', this.setUserListener)
     }
 
     static setUserListener(event) {
@@ -36,7 +36,8 @@ class Intro {
 
         const url = 'http://localhost:3000/api/v1/users';
         let inputEl = rootEl.querySelector('#name-input')
-        const body = { username: inputEl.value }
+        const body = { username: inputEl.value };
+        const formEl = rootEl.querySelector('#username-form')
 
         fetch(url, {
             method: 'POST',
@@ -47,13 +48,9 @@ class Intro {
             .then(user => {
                 State.userName = user.username;
                 State.userId = user.id;
+                State.category = event.target.id;
                 // console.log(`${State.userName} ${State.userId}`)
-                event.target.reset()
+                formEl.reset();
             });
     }
 }
-
-
-
-
-
