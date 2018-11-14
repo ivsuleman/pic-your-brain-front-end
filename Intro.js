@@ -51,6 +51,7 @@ class Intro {
                 State.category = event.target.id;
                 // console.log(`${State.userName} ${State.userId}`)
                 formEl.reset();
+                Game.render()
             });
     }
 }

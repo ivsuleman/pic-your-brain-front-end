@@ -22,7 +22,7 @@ class Game {
             </div>
             <div id='timer'>TIMER WILL GO HERE You have ${State.timeLeft} seconds left!</div>
             `
-        this.getImages('cat')  // TODO: change 'cat' to State.category so variable passed into getImages 
+        this.getImages(State.category)  // TODO: change 'cat' to State.category so variable passed into getImages 
     }
 
     static getImages(query) {
@@ -31,12 +31,12 @@ class Game {
         const perPage = 16
         let page = 1
         this.fetchImages(url, clientId, query, perPage, page)
-            .then (data => {
+            .then(data => {
                 console.log(data)
                 State.images16.push(...data.results)
                 State.images32.push(...data.results)
                 page += 1
-                this.fetchImages(url, clientId, query, perPage, page).then (data => {
+                this.fetchImages(url, clientId, query, perPage, page).then(data => {
                     State.images32.push(...data.results)
                     page = 1
                     console.log(State.images32)
@@ -45,7 +45,7 @@ class Game {
 
     }
 
-    static fetchImages (url, clientId, query, perPage, page) {
+    static fetchImages(url, clientId, query, perPage, page) {
         const fetchUrl = `${url}?client_id=${clientId}&query=${query}&per_page=${perPage}&page=${page}`
         return fetch(fetchUrl)
             .then(resp => resp.json())
@@ -62,7 +62,7 @@ class Game {
         // TODO: once time is 0 add event listender to trigger renderLevel1PhotoList
         // this.renderLevel1PhotoList()
     }
-    
+
     static renderLevel1PhotoList() {
         const randomizedImagesUrls = this.shuffleImages(State.images32)
         console.log(randomizedImagesUrls)
@@ -74,8 +74,8 @@ class Game {
             listBoxes[index].style.background = `url(${randomizedImagesUrls[index]}) no-repeat center center`;
             listBoxes[index].style.backgroundSize = 'cover'
         })
-        
-    } 
+
+    }
 
     static shuffleImages(images) {
         return this.shuffle(images).map(image => image.urls.small)
@@ -83,16 +83,16 @@ class Game {
 
     static shuffle(array) {
         let currentIndex = array.length
-	    let temporaryValue, randomIndex
+        let temporaryValue, randomIndex
 
-    	while (0 !== currentIndex) {
-		randomIndex = Math.floor(Math.random() * currentIndex)
-		currentIndex -= 1
+        while (0 !== currentIndex) {
+            randomIndex = Math.floor(Math.random() * currentIndex)
+            currentIndex -= 1
 
-		temporaryValue = array[currentIndex]
-		array[currentIndex] = array[randomIndex]
-		array[randomIndex] = temporaryValue
-	    }
+            temporaryValue = array[currentIndex]
+            array[currentIndex] = array[randomIndex]
+            array[randomIndex] = temporaryValue
+        }
         return array
     }
 
