@@ -12,6 +12,11 @@ class Game {
         event.preventDefault()
         rootEl.innerHTML = `
             <h1>LOGO WILL GO HERE</h1>
+            <div class="container-countdown">
+                <ul>
+                    <li><span id="seconds"></span>Seconds</li>
+                </ul>
+            </div>
             <div id="game-container">
                 <div id="photo-grid">
                     ${Array(16).fill().map((_, idx) => `<div id='grid-box-${idx}' class="grid-box"></div>`).join('')}
@@ -19,14 +24,29 @@ class Game {
                 <div id="photo-list">
                     ${Array(32).fill().map((_, idx) => `<div id='list-box-${idx}' class="list-box"></div>`).join('')}
                 </div>
-            </div>
-            <div id='timer'>TIMER WILL GO HERE You have ${State.timeLeft} seconds left!</div>
+            </div>   
             `
         this.getImages(State.category)
             .then(() => this.gridDataFunction())
             // .then(() => this.listDataFunction())
             .then(() => this.renderLevel1())
     }
+
+     static countDownTimer(number) {
+        let countDown = number
+        document.getElementById('seconds').innerText = countDown;
+
+        const IntervalHandle = setInterval(function () {
+            countDown = --countDown;
+            if (countDown >= 0) {
+                document.getElementById('seconds').innerText = countDown;
+            } else {
+                clearInterval(IntervalHandle)
+            }
+        }, 1000)
+        // setTimeout(() => clearInterval(handle), number * 1000)
+    }
+  
 
     static gridDataFunction () {
         const gridData = []
@@ -65,7 +85,7 @@ class Game {
 
     static renderLevel(array) {
         array.forEach(item => {
-            const gridBoxObj = {...State.gridData[item]}
+            const gridBoxObj = { ...State.gridData[item] }
             const boxEl = document.querySelector(`#grid-box-${item}`)
             boxEl.style.background = `url(${gridBoxObj.imgUrl}) no-repeat center center`
             boxEl.style.backgroundSize = 'cover'
@@ -75,7 +95,7 @@ class Game {
     static renderLevel1() {
         const imgIndexes = [0];
         this.renderLevel(imgIndexes)
-
+        this.countDownTimer(10);
         setTimeout(() => {
             this.clearLevel(imgIndexes)
             this.listDataFunction()
@@ -103,25 +123,25 @@ class Game {
     static renderLevel3() {
         const imgIndexes = [0, 1, 2, 4, 5, 6, 8, 9, 10]
         this.renderLevel(imgIndexes)
-                // TODO: once images have rendered to page start count down (10 seconds) then turn images white
-                // this.clearLevel(imgIndexes)
-                // TODO: once time is 0 trigger renderPhotoList
-                // this.renderPhotoList()
-                // TODO: start timer and enable user to click on pictures to select the correct four - when they are selected  timer stops and level 3 is rendered & game stats added to State
-        }
-    
+        // TODO: once images have rendered to page start count down (10 seconds) then turn images white
+        // this.clearLevel(imgIndexes)
+        // TODO: once time is 0 trigger renderPhotoList
+        // this.renderPhotoList()
+        // TODO: start timer and enable user to click on pictures to select the correct four - when they are selected  timer stops and level 3 is rendered & game stats added to State
+    }
+
     static renderLevel4() {
         const imgIndexes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
         this.renderLevel(imgIndexes)
-                // TODO: once images have rendered to page start count down (10 seconds) then turn images white
-                // this.clearLevel(imgIndexes)
-                // TODO: once time is 0 trigger renderPhotoList
-                // this.renderPhotoList()
-                // TODO: start timer and enable user to click on pictures to select the correct four - when they are selected  timer stops and level 3 is rendered & game stats added to State
-        }
+        // TODO: once images have rendered to page start count down (10 seconds) then turn images white
+        // this.clearLevel(imgIndexes)
+        // TODO: once time is 0 trigger renderPhotoList
+        // this.renderPhotoList()
+        // TODO: start timer and enable user to click on pictures to select the correct four - when they are selected  timer stops and level 3 is rendered & game stats added to State
+    }
 
     static clearLevel(array) {
-        array.forEach(item => {document.querySelectorAll('.grid-box')[item].style.background = 'white'})
+        array.forEach(item => { document.querySelectorAll('.grid-box')[item].style.background = 'white' })
     }
 
     static listDataFunction() {
@@ -167,7 +187,7 @@ class Game {
 
     static clearPhotoList() {
         const listBoxes = document.querySelectorAll('.list-box')
-        listBoxes.forEach((listBox, index) => {listBoxes[index].style.background = 'white'})
+        listBoxes.forEach((listBox, index) => { listBoxes[index].style.background = 'white' })
     }
 
     static shuffleImages(images) {

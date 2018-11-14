@@ -99,6 +99,7 @@ p {
 
 
 
+
 #photo-list, #photo-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -135,3 +136,21 @@ p {
         grid-template-columns: 1fr;
     }
 }
+
+.container-countdown {
+    color: #333;
+    text-align: center;
+  }
+
+  li {
+    display: inline-block;
+    font-size: 1.5em;
+    list-style-type: none;
+    padding: 1em;
+    text-transform: uppercase;
+  }
+  
+  li span {
+    display: block;
+    font-size: 4.5rem;
+  }
