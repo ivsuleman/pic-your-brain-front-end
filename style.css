@@ -22,7 +22,6 @@ p {
 #category-container {
     display: grid;
     grid-template-columns: 1fr;
-    padding: 0 5%;
     height: 80vh
 }
 
