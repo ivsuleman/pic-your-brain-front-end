@@ -15,15 +15,15 @@ class Intro {
             
             <div id="category-container"> 
                 <div id="category-grid">
-                    <div id=landscape class="category-box"><p id="landscape">Landscape</p></div>
-                    <div id="animals" class="category-box"><p id="animals">Animals</p></div>
-                    <div id="food" class="category-box"><p id="food">Food</p></div>
-                    <div id="roads" class="category-box"><p id="roads">Roads</p></div>
-                    <div id="trees" class="category-box"><p id="trees">Trees</p></div>
-                    <div id="coral" class="category-box"><p id="coral">Coral</p></div>
-                    <div id="texture" class="category-box"><p id="texture">Texture</p></div>
-                    <div id="street-art" class="category-box"><p id="street art">Street Art</p></div>
-                    <div id="classic-cars" class="category-box"><p id="classic cars">Classic Cars</p></div>
+                    <div id="img-1" class="category-box"><p id="landscape">Landscape</p></div>
+                    <div id="img-2" class="category-box"><p id="animals">Animals</p></div>
+                    <div id="img-3" class="category-box"><p id="food">Food</p></div>
+                    <div id="img-4" class="category-box"><p id="roads">Roads</p></div>
+                    <div id="img-5" class="category-box"><p id="trees">Trees</p></div>
+                    <div id="img-6" class="category-box"><p id="coral">Coral</p></div>
+                    <div id="img-7" class="category-box"><p id="texture">Texture</p></div>
+                    <div id="img-8" class="category-box"><p id="street art">Street Art</p></div>
+                    <div id="img-9" class="category-box"><p id="classic cars">Classic Cars</p></div>
                 </div>
             </div>
         `

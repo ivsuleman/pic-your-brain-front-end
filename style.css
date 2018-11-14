@@ -29,51 +29,51 @@ p {
 #category-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 5px;
-    padding: 10px
+    grid-gap: 15px;
+    padding: 10px;
 }
 
-#landscape {
+#img-1 {
     background: url('./images/landscape.jpeg') no-repeat center center;
     background-size: cover
 }
 
-#animals {
+#img-2 {
     background: url('./images/animals.jpeg') no-repeat center center;
     background-size: cover
 }
 
-#food {
+#img-3 {
     background: url('./images/food.jpeg') no-repeat center center;
     background-size: cover
 }
 
-#roads {
+#img-4 {
     background: url('./images/roads.jpeg') no-repeat center center;
     background-size: cover
 }
 
-#trees {
+#img-5 {
     background: url('./images/trees.jpeg') no-repeat center center;
     background-size: cover
 }
 
-#coral {
+#img-6 {
     background: url('./images/coral.jpeg') no-repeat center center;
     background-size: cover
 }
 
-#texture {
+#img-7 {
     background: url('./images/texture.jpeg') no-repeat center center;
     background-size: cover
 }
 
-#street-art {
+#img-8 {
     background: url('./images/art.jpeg') no-repeat center center
     ;background-size: cover
 }
 
-#classic-cars {
+#img-9 {
     background: url('./images/cars.jpeg') no-repeat center center;
     background-size: cover
 }
