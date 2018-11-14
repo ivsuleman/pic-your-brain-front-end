@@ -62,3 +62,42 @@
     text-align: center;
     vertical-align: middle
 }
+
+
+
+#photo-list, #photo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+
+/* .grid-box {
+    overflow: hidden;
+    position: relative;
+} */
+
+.list-box, .grid-box {
+
+}
+
+/* .image-grid-box {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+} */
+
+#game-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding: 0 5%;
+    height: 80vh;
+}
+
+@media screen and (max-width: 600px) {
+    #game-container {
+        grid-template-columns: 1fr;
+    }
+}
