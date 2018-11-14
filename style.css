@@ -1,38 +1,64 @@
-#photo-list, #photo-grid {
+#category-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
-    padding: 10px;
-}
-
-
-.list-box {
-    
-}
-
-.grid-box {
-
-
-}
-
-/* .list-box, .grid-box {
-    background: url('https://images.unsplash.com/photo-1507614498949-edbabc86a14f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=65327334c38c6cc120f0be6aacbce03c&auto=format&fit=crop&w=700&q=80');
-    background-size: cover;
-} */
-
-.image-grid-box {
-    background-size: cover;
-}
-
-#game-container {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 1fr;
     padding: 0 5%;
-    height: 80vh;
+    height: 80vh
 }
 
-@media screen and (max-width: 600px) {
-    #game-container {
-        grid-template-columns: 1fr;
-    }
+#category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    padding: 10px
+}
+
+#landscape {
+    background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470');
+    background-size: cover
+}
+
+#animals {
+    background: url("https://images.unsplash.com/photo-1499995909106-2d6741de64ec");
+    background-size: cover
+}
+
+#food {
+    background: url("https://images.unsplash.com/photo-1511688878353-3a2f5be94cd7");
+    background-size: cover
+}
+
+#roads {
+    background: url('https://images.unsplash.com/photo-1520594923568-1b5d82587f86');
+    background-size: cover
+}
+
+#trees {
+    background: url("https://images.unsplash.com/photo-1518495973542-4542c06a5843");
+    background-size: cover
+}
+
+#coral {
+    background: url("https://images.unsplash.com/photo-1533713692156-f70938dc0d54");
+    background-size: cover
+}
+
+#texture {
+    background: url("https://images.unsplash.com/photo-1519606247872-0440aae9b827");
+    background-size: cover
+}
+
+#street-art {
+    background: url("https://images.unsplash.com/photo-1525097596740-cb2a70e07e3b")
+    ;background-size: cover
+}
+
+#classic-cars {
+    background: url("https://images.unsplash.com/photo-1531758406142-df183f2f1f07");
+    background-size: cover
+}
+
+.category-box {
+    color: white;
+    text-align: center;
+    vertical-align: middle
 }
