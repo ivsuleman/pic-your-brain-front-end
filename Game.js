@@ -14,7 +14,7 @@ class Game {
             <h1>LOGO WILL GO HERE</h1>
             <div id="game-container">
                 <div id="photo-grid">
-                    ${Array(16).fill().map((_, idx) => `<div id='grid-box-${idx + 1}' class="grid-box"> <img src="" id='image-grid-box-${idx + 1}' class="image-grid-box"> ${idx + 1} </div>`).join('')}
+                    ${Array(16).fill().map((_, idx) => `<div id='grid-box-${idx + 1}' class="grid-box">${idx + 1} </div>`).join('')}
                 </div>
                 <div id="photo-list">
                     ${Array(32).fill().map((_, idx) => `<div id='list-box-${idx + 1}' class="list-box">${idx + 1}</div>`).join('')}
@@ -55,19 +55,33 @@ class Game {
         State.timeLeft = 3
         let firstBoxEl = document.querySelector('#grid-box-1')
         const firstImageUrl = State.images16[0].urls.regular
-        firstBoxEl.style.background = firstImageUrl
+        firstBoxEl.style.background = `url(${firstImageUrl}) no-repeat center center`
+        firstBoxEl.style.backgroundSize = 'cover'
         // TODO: once image has rendered to page start timer to count down from 3 seconds
-        firstBoxEl.style.background = 'white'
+        // firstBoxEl.style.background = 'white'
         // TODO: once time is 0 add event listender to trigger renderLevel1PhotoList
+        // this.renderLevel1PhotoList()
     }
     
     static renderLevel1PhotoList() {
-        randomizedImagesUrls = this.shuffleImages(State.images32).map(image => image.urls.small)
+        const randomizedImagesUrls = this.shuffleImages(State.images32)
         console.log(randomizedImagesUrls)
+        const listBoxes = document.querySelectorAll('.list-box')
+        listBoxes.forEach((listBox, index) => {
+            console.log(index)
+            // const listBoxImage = listBoxes[index].querySelector('img')
+            // listBoxImage.src = randomizedImagesUrls[index]
+            listBoxes[index].style.background = `url(${randomizedImagesUrls[index]}) no-repeat center center`;
+            listBoxes[index].style.backgroundSize = 'cover'
+        })
         
     } 
 
-    static shuffleImages(array) {
+    static shuffleImages(images) {
+        return this.shuffle(images).map(image => image.urls.small)
+    }
+
+    static shuffle(array) {
         let currentIndex = array.length
 	    let temporaryValue, randomIndex
 
