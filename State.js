@@ -7,6 +7,7 @@ class State {
         this.images32 = []
         this.timeLeft = 100
         this.points = 0
+        this.gridData = []
     }
 
     setUser(name) {
