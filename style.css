@@ -1,3 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+
+#logo h1, #form, #category-container {
+    text-align: center
+}
+
+p {
+    font-size: x-large;
+}
+
+#form input {
+    width: 400px;
+    max-width: 90%;
+    height: 50px;
+    text-align: center;
+    font-size: small;
+}
+
+
 #category-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -8,59 +29,73 @@
 #category-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
+    grid-gap: 5px;
     padding: 10px
 }
 
 #landscape {
-    background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470');
+    background: url('./images/landscape.jpeg') no-repeat center center;
     background-size: cover
 }
 
 #animals {
-    background: url("https://images.unsplash.com/photo-1499995909106-2d6741de64ec");
+    background: url('./images/animals.jpeg') no-repeat center center;
     background-size: cover
 }
 
 #food {
-    background: url("https://images.unsplash.com/photo-1511688878353-3a2f5be94cd7");
+    background: url('./images/food.jpeg') no-repeat center center;
     background-size: cover
 }
 
 #roads {
-    background: url('https://images.unsplash.com/photo-1520594923568-1b5d82587f86');
+    background: url('./images/roads.jpeg') no-repeat center center;
     background-size: cover
 }
 
 #trees {
-    background: url("https://images.unsplash.com/photo-1518495973542-4542c06a5843");
+    background: url('./images/trees.jpeg') no-repeat center center;
     background-size: cover
 }
 
 #coral {
-    background: url("https://images.unsplash.com/photo-1533713692156-f70938dc0d54");
+    background: url('./images/coral.jpeg') no-repeat center center;
     background-size: cover
 }
 
 #texture {
-    background: url("https://images.unsplash.com/photo-1519606247872-0440aae9b827");
+    background: url('./images/texture.jpeg') no-repeat center center;
     background-size: cover
 }
 
 #street-art {
-    background: url("https://images.unsplash.com/photo-1525097596740-cb2a70e07e3b")
+    background: url('./images/art.jpeg') no-repeat center center
     ;background-size: cover
 }
 
 #classic-cars {
-    background: url("https://images.unsplash.com/photo-1531758406142-df183f2f1f07");
+    background: url('./images/cars.jpeg') no-repeat center center;
     background-size: cover
 }
 
 .category-box {
     color: white;
-    text-align: center;
-    vertical-align: middle
+    
+}
+
+.category-box p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: rgba(0,0,0,0.0.1);
+    transition: .3s;
+}
+
+.category-box p:hover {
+    background-color: rgba(0,0,0,0.6);
 }
 
 

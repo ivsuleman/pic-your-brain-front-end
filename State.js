@@ -1,9 +1,7 @@
 class State {
     static init() {
-
         this.userId = ''
         this.userName = ''
-
         this.category = ''
         this.images16 = []
         this.images32 = []
@@ -13,7 +11,6 @@ class State {
 
     setUser(name) {
         this.userName = name
-
     }
 }
 
