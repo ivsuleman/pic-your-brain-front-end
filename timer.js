@@ -1,3 +1,4 @@
+
 ! function (t, n) {
     "object" == typeof exports && "undefined" != typeof module ? module.exports = n() : "function" == typeof define && define.amd ? define(n) : t.Timer = n()
 }(this, function () {
