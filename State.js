@@ -8,6 +8,7 @@ class State {
         this.timeLeft = 100
         this.points = 0
         this.gridData = []
+        this.listData = []
     }
 
     setUser(name) {
