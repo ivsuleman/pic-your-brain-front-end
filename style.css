@@ -79,7 +79,7 @@
 } */
 
 .list-box, .grid-box {
-
+    border-radius: 10px
 }
 
 /* .image-grid-box {

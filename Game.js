@@ -51,24 +51,129 @@ class Game {
             .then(resp => resp.json())
     }
 
-    static renderLevel1PhotoGrid() {
+    static renderLevel1() {
         State.timeLeft = 3
-        let firstBoxEl = document.querySelector('#grid-box-1')
+        const firstBoxEl = document.querySelector('#grid-box-1')
         const firstImageUrl = State.images16[0].urls.regular
         firstBoxEl.style.background = `url(${firstImageUrl}) no-repeat center center`
         firstBoxEl.style.backgroundSize = 'cover'
-        // TODO: once image has rendered to page start timer to count down from 3 seconds
+        // TODO: once image has rendered to page start count down (3 seconds) then turn image white
         // firstBoxEl.style.background = 'white'
-        // TODO: once time is 0 add event listender to trigger renderLevel1PhotoList
-        // this.renderLevel1PhotoList()
+        // TODO: once time is 0 trigger renderPhotoList
+        // this.renderPhotoList()
+        // TODO: start timer and enable user to click on pictures to select the right one - when correct is selected the timer stops and level 2 is rendered & game stats added to State
     }
+
+    static renderLevel2() {
+        const firstBoxEl = document.querySelector('#grid-box-1')
+        const secondBoxEl = document.querySelector('#grid-box-2')
+        const thirdBoxEl = document.querySelector('#grid-box-5')
+        const fourthBoxEl = document.querySelector('#grid-box-6')
+        const level2GridBoxes = []
+        level2GridBoxes.push(firstBoxEl, secondBoxEl, thirdBoxEl, fourthBoxEl)
+        const firstImageUrl = State.images16[0].urls.regular
+        const secondImageUrl = State.images16[1].urls.regular
+        const thirdImageUrl = State.images16[2].urls.regular
+        const fourthImageUrl = State.images16[3].urls.regular
+        const level2GridUrls = []
+        level2GridUrls.push(firstImageUrl, secondImageUrl, thirdImageUrl, fourthImageUrl)
+        level2GridBoxes.forEach((gridBox, index) => {
+            level2GridBoxes[index].style.background = `url(${level2GridUrls[index]}) no-repeat center center`
+            level2GridBoxes[index].style.backgroundSize = 'cover'
+        // TODO: once images have rendered to page start count down (10 seconds) then turn images white
+            // level2GridBoxes.forEach((gridBox, index) => {level2GridBoxes[index].style.background = 'white'})
+        // TODO: once time is 0 trigger renderPhotoList
+        // this.renderPhotoList()
+        // TODO: start timer and enable user to click on pictures to select the correct four - when they are selected  timer stops and level 3 is rendered & game stats added to State
+        })
+    }
+
+        static renderLevel3() {
+            const firstBoxEl = document.querySelector('#grid-box-1')
+            const secondBoxEl = document.querySelector('#grid-box-2')
+            const thirdBoxEl = document.querySelector('#grid-box-5')
+            const fourthBoxEl = document.querySelector('#grid-box-6')
+            const fifthBoxEl = document.querySelector('#grid-box-9')
+            const sixthBoxEl = document.querySelector('#grid-box-10')
+            const seventhBoxEl = document.querySelector('#grid-box-11')
+            const eighthBoxEl = document.querySelector('#grid-box-3')
+            const ninthBoxEl = document.querySelector('#grid-box-7')
+            const level3GridBoxes = []
+            level3GridBoxes.push(firstBoxEl, secondBoxEl, thirdBoxEl, fourthBoxEl, fifthBoxEl, sixthBoxEl, seventhBoxEl, eighthBoxEl, ninthBoxEl)
+            const firstImageUrl = State.images16[0].urls.regular
+            const secondImageUrl = State.images16[1].urls.regular
+            const thirdImageUrl = State.images16[2].urls.regular
+            const fourthImageUrl = State.images16[3].urls.regular
+            const fifthImageUrl = State.images16[4].urls.regular
+            const sixthImageUrl = State.images16[5].urls.regular
+            const seventhImageUrl = State.images16[6].urls.regular
+            const eighthImageUrl = State.images16[7].urls.regular
+            const ninthImageUrl = State.images16[8].urls.regular
+            const level3GridUrls = []
+            level3GridUrls.push(firstImageUrl, secondImageUrl, thirdImageUrl, fourthImageUrl, fifthImageUrl, sixthImageUrl, seventhImageUrl, eighthImageUrl, ninthImageUrl)
+            level3GridBoxes.forEach((gridBox, index) => {
+                level3GridBoxes[index].style.background = `url(${level3GridUrls[index]}) no-repeat center center`
+                level3GridBoxes[index].style.backgroundSize = 'cover'
+                // TODO: once images have rendered to page start count down (10 seconds) then turn images white
+                // level3GridBoxes.forEach((gridBox, index) => {level3GridBoxes[index].style.background = 'white'})
+                // TODO: once time is 0 trigger renderPhotoList
+                // this.renderPhotoList()
+                // TODO: start timer and enable user to click on pictures to select the correct four - when they are selected  timer stops and level 3 is rendered & game stats added to State
+            })
+        }
     
-    static renderLevel1PhotoList() {
+        static renderLevel4() {
+            const firstBoxEl = document.querySelector('#grid-box-1')
+            const secondBoxEl = document.querySelector('#grid-box-2')
+            const thirdBoxEl = document.querySelector('#grid-box-5')
+            const fourthBoxEl = document.querySelector('#grid-box-6')
+            const fifthBoxEl = document.querySelector('#grid-box-9')
+            const sixthBoxEl = document.querySelector('#grid-box-10')
+            const seventhBoxEl = document.querySelector('#grid-box-11')
+            const eighthBoxEl = document.querySelector('#grid-box-3')
+            const ninthBoxEl = document.querySelector('#grid-box-7')
+            const tenthBoxEl = document.querySelector('#grid-box-13')
+            const eleventhBoxEl = document.querySelector('#grid-box-14')
+            const twelfthBoxEl = document.querySelector('#grid-box-15')
+            const thirteenthBoxEl = document.querySelector('#grid-box-16')
+            const fourteenthBoxEl = document.querySelector('#grid-box-4')
+            const fifteenthBoxEl = document.querySelector('#grid-box-8')
+            const sixteenthBoxEl = document.querySelector('#grid-box-12')
+            const level4GridBoxes = []
+            level4GridBoxes.push(firstBoxEl, secondBoxEl, thirdBoxEl, fourthBoxEl, fifthBoxEl, sixthBoxEl, seventhBoxEl, eighthBoxEl, ninthBoxEl, tenthBoxEl, eleventhBoxEl, twelfthBoxEl, thirteenthBoxEl, fourteenthBoxEl, fifteenthBoxEl, sixteenthBoxEl)
+            const firstImageUrl = State.images16[0].urls.regular
+            const secondImageUrl = State.images16[1].urls.regular
+            const thirdImageUrl = State.images16[2].urls.regular
+            const fourthImageUrl = State.images16[3].urls.regular
+            const fifthImageUrl = State.images16[4].urls.regular
+            const sixthImageUrl = State.images16[5].urls.regular
+            const seventhImageUrl = State.images16[6].urls.regular
+            const eighthImageUrl = State.images16[7].urls.regular
+            const ninthImageUrl = State.images16[8].urls.regular
+            const tenthImageUrl = State.images16[9].urls.regular
+            const eleventhImageUrl = State.images16[10].urls.regular
+            const twelfthImageUrl = State.images16[11].urls.regular
+            const thirteenthImageUrl = State.images16[12].urls.regular
+            const fourteenthImageUrl = State.images16[13].urls.regular
+            const fifteenthImageUrl = State.images16[14].urls.regular
+            const sixteenthImageUrl = State.images16[15].urls.regular
+            const level4GridUrls = []
+            level4GridUrls.push(firstImageUrl, secondImageUrl, thirdImageUrl, fourthImageUrl, fifthImageUrl, sixthImageUrl, seventhImageUrl, eighthImageUrl, ninthImageUrl, tenthImageUrl, eleventhImageUrl, twelfthImageUrl, thirteenthImageUrl, fourteenthImageUrl, fifteenthImageUrl, sixteenthImageUrl)
+            level4GridBoxes.forEach((gridBox, index) => {
+                level4GridBoxes[index].style.background = `url(${level4GridUrls[index]}) no-repeat center center`
+                level4GridBoxes[index].style.backgroundSize = 'cover'
+                // TODO: once images have rendered to page start count down (10 seconds) then turn images white
+                // level4GridBoxes.forEach((gridBox, index) => {level4GridBoxes[index].style.background = 'white'})
+                // TODO: once time is 0 trigger renderPhotoList
+                // this.renderPhotoList()
+                // TODO: start timer and enable user to click on pictures to select the correct four - when they are selected  timer stops and level 3 is rendered & game stats added to State
+            })
+        }
+
+    static renderPhotoList() {
         const randomizedImagesUrls = this.shuffleImages(State.images32)
-        console.log(randomizedImagesUrls)
         const listBoxes = document.querySelectorAll('.list-box')
         listBoxes.forEach((listBox, index) => {
-            console.log(index)
             // const listBoxImage = listBoxes[index].querySelector('img')
             // listBoxImage.src = randomizedImagesUrls[index]
             listBoxes[index].style.background = `url(${randomizedImagesUrls[index]}) no-repeat center center`;
