@@ -26,22 +26,29 @@ class Game {
                 </div>
             </div>   
             `
+        const photoListEl = document.querySelector('#photo-list')
+        photoListEl.addEventListener('click', event => {
+            this.matchImage(event)
+        })
+
         this.getImages(State.category)
             .then(() => this.gridDataFunction())
-            // .then(() => this.listDataFunction())
+            .then(() => this.listDataFunction())
             .then(() => this.renderLevel1())
     }
 
-     static countDownTimer(number) {
+     static countDownTimer(number, imgIndexes) {
         let countDown = number
-        document.getElementById('seconds').innerText = countDown;
-
-        const IntervalHandle = setInterval(function () {
+        document.getElementById('seconds').innerText = countDown
+        // switch 
+        const IntervalHandle = setInterval(() => {
             countDown = --countDown;
             if (countDown >= 0) {
-                document.getElementById('seconds').innerText = countDown;
+                document.getElementById('seconds').innerText = countDown
             } else {
                 clearInterval(IntervalHandle)
+                this.clearLevel(imgIndexes)
+                this.renderPhotoList()
             }
         }, 1000)
         // setTimeout(() => clearInterval(handle), number * 1000)
@@ -70,10 +77,13 @@ class Game {
                 State.images16.push(...data.results)
                 State.images32.push(...data.results)
                 page += 1
-                this.fetchImages(url, clientId, query, perPage, page).then(data => {
-                    State.images32.push(...data.results)
-                    page = 1
-                })
+            })
+            .then(() => {
+                return this.fetchImages(url, clientId, query, perPage, page)
+                    .then(data => {
+                        State.images32.push(...data.results)
+                        page = 1
+                    })
             })
     }
 
@@ -86,6 +96,7 @@ class Game {
     static renderLevel(array) {
         array.forEach(item => {
             const gridBoxObj = { ...State.gridData[item] }
+            State.selectedData.push(State.gridData[item].imgId)
             const boxEl = document.querySelector(`#grid-box-${item}`)
             boxEl.style.background = `url(${gridBoxObj.imgUrl}) no-repeat center center`
             boxEl.style.backgroundSize = 'cover'
@@ -93,14 +104,11 @@ class Game {
     }
 
     static renderLevel1() {
-        const imgIndexes = [0];
+        const imgIndexes = [0]
+        State.currentLevelIndexesArray = [...imgIndexes]
         this.renderLevel(imgIndexes)
-        this.countDownTimer(10);
-        setTimeout(() => {
-            this.clearLevel(imgIndexes)
-            this.listDataFunction()
-            this.renderPhotoList()
-        }, 3000)
+        this.countDownTimer(5, imgIndexes)
+
         // TODO: once image has rendered to page start count down (3 seconds) then turn image white
         // firstBoxEl.style.background = 'white'
         // TODO: once time is 0 trigger renderPhotoList
@@ -111,6 +119,7 @@ class Game {
 
     static renderLevel2() {
         const imgIndexes = [0, 1, 4, 5]
+        State.currentLevelIndexesArray = [...imgIndexes]
         this.renderLevel(imgIndexes)
         // TODO: once images have rendered to page start count down (10 seconds) then turn images white
         // this.clearLevel(imgIndexes)
@@ -122,6 +131,7 @@ class Game {
 
     static renderLevel3() {
         const imgIndexes = [0, 1, 2, 4, 5, 6, 8, 9, 10]
+        State.currentLevelIndexesArray = [...imgIndexes]
         this.renderLevel(imgIndexes)
         // TODO: once images have rendered to page start count down (10 seconds) then turn images white
         // this.clearLevel(imgIndexes)
@@ -132,6 +142,7 @@ class Game {
 
     static renderLevel4() {
         const imgIndexes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        State.currentLevelIndexesArray = [...imgIndexes]
         this.renderLevel(imgIndexes)
         // TODO: once images have rendered to page start count down (10 seconds) then turn images white
         // this.clearLevel(imgIndexes)
@@ -140,35 +151,33 @@ class Game {
         // TODO: start timer and enable user to click on pictures to select the correct four - when they are selected  timer stops and level 3 is rendered & game stats added to State
     }
 
-    static clearLevel(array) {
-        array.forEach(item => { document.querySelectorAll('.grid-box')[item].style.background = 'white' })
+    static clearLevel() {
+        State.currentLevelIndexesArray.forEach(item => { document.querySelectorAll('.grid-box')[item].style.background = 'white' })
     }
 
     static listDataFunction() {
         const listData = []
         document.querySelectorAll('.list-box').forEach((listBox, index) => {
             const listBoxObj = {}
-            console.log(listBox)
             listBoxObj.listBox = listBox
             listBoxObj.imgUrl = State.images32[index].urls.regular
             listBoxObj.imgId = State.images32[index].id
             listData.push(listBoxObj)
         })
         State.listData = [...listData]
+        
     }
 
     static renderPhotoList() {
-        console.log(State.listData)
+        State.startTime = Date.now()
         const array = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
         array.forEach(item => {
-            console.log(item)
             const listBoxItem = {...State.listData[item]}
             const listEl = document.querySelector(`#list-box-${item}`)
             listEl.style.background = `url(${listBoxItem.imgUrl}) no-repeat center center`
             listEl.style.backgroundSize = 'cover'
+            listEl.setAttribute('data-id', State.listData[item].imgId)
         })
-     //  setTimeout(() => {this.clearPhotoList()}, 5000)
-     //  this.renderLevel2()
     }
 
     // static renderPhotoList() {
@@ -208,4 +217,36 @@ class Game {
         return array
     }
 
+    static matchImage(event) {
+        if (State.selectedData.find(id => id === event.target.dataset.id)){
+            console.log('WOOOOO')
+            // delete the id from State.selectedData
+            State.selectedData.splice(State.selectedData.indexOf(event.target.dataset.id), 1)
+            // change background of clicked item in list to green
+            // show image on the grid
+            // check value of counter (counter = State.selectedData.length) ---- if 0, render next level, if >0 continue level
+            if (State.selectedData.length === 0){
+                State.currentLevel += 1
+                State.finishTime = Date.now()
+                this.timeCalculator()
+                this.clearLevel()
+                this.clearPhotoList()
+                this.renderLevel2()  // need to change this to be dynamic not hard coding the specific level -- use State.currentLevel
+            }
+        } else {
+            console.log("no")
+            // change background of clicked item in list to red
+            // add a penalty point to State.penalties
+            State.penalties += 1
+        }
+        
+    }
+
+    static timeCalculator() {
+        const time = (State.finishTime - State.startTime) / 1000 
+        State.times.push(time)
+        State.level1Time = time
+    }
+
 }
+
