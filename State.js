@@ -3,6 +3,7 @@ class State {
         this.userId = ''
         this.userName = ''
         this.category = ''
+        this.categoryId = ''
         this.images16 = []
         this.images32 = []
         this.points = 0
@@ -23,7 +24,6 @@ class State {
         this.overallTime = 0
         this.startTime = 0
         this.finishTime = 0
-        // this.timings = []
         this.times = []
     }
 

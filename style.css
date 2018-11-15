@@ -11,13 +11,13 @@ p {
 }
 
 #form input {
-    width: 400px;
+    width: 32vw;
     max-width: 90%;
     height: 50px;
     text-align: center;
     font-size: small;
+    border-radius: 10px
 }
-
 
 #category-container {
     display: grid;
@@ -30,6 +30,16 @@ p {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 15px;
     padding: 10px;
+}
+
+#instructions {
+    max-width: 90%;
+    text-align: center;
+    margin: 0 auto;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 #img-1 {
@@ -77,8 +87,20 @@ p {
     background-size: cover
 }
 
+/* .rounded {
+    border-radius: 10px
+} */
+
+.large {
+    height: 70vh;
+    width: 70vw;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
 .category-box {
     color: white;
+    border-radius: 10px
     
 }
 
@@ -97,8 +119,13 @@ p {
     background-color: rgba(0,0,0,0.6);
 }
 
-
-
+.nav-button {
+    width: 30vw;
+    margin-left: 35%;
+    margin-right: 35%;
+    padding: 10px;
+    border-radius: 10px
+}
 
 #photo-list, #photo-grid {
     display: grid;
@@ -106,7 +133,6 @@ p {
     grid-gap: 10px;
     padding: 10px;
 }
-
 
 /* .grid-box {
     overflow: hidden;
@@ -160,6 +186,7 @@ p {
     animation-iteration-count: infinite
 } */
 
-.correct {
+/* .correct {
     
-}
+} */
+

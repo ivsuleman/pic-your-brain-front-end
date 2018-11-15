@@ -14,6 +14,10 @@
 
 // IRFAN validation on 1st page
 
-// AMALIE  quit button available during game
+// ****COMPLETED******  AMALIE  quit button available during game
 
 // start button page add category image and basic instructions
+
+// not gain penalties for clicking correct one 
+
+// oak tree date, yo!

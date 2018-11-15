@@ -1,18 +1,14 @@
 class Intro {
     static render() {
         rootEl.innerHTML = `
-
-            
             <div id ="logo">
-                <h1>logo</h1>
-            </div>
-
+                <h1>Pic your brain</h1>
+            </div> <br>
             <div id="form">
                 <form id='username-form'>
                     <input id='name-input' placeholder='Type Your Name And Choose A Category Below'/>
                 </form>
-            </div>
-            
+            </div> <br>
             <div id="category-container"> 
                 <div id="category-grid">
                     <div id="img-1" class="category-box"><p id="landscape">Landscape</p></div>
@@ -46,11 +42,11 @@ class Intro {
         })
             .then((response) => response.json())
             .then(user => {
-                State.userName = user.username;
-                State.userId = user.id;
-                State.category = event.target.id;
-                // console.log(`${State.userName} ${State.userId}`)
-                formEl.reset();
+                State.userName = user.username
+                State.userId = user.id
+                State.category = event.target.id
+                State.categoryId = event.target.parentElement.id
+                formEl.reset()
                 Game.render()
             });
     }
