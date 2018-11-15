@@ -23,7 +23,7 @@ class State {
         this.overallTime = 0
         this.startTime = 0
         this.finishTime = 0
-        this.timings = []
+        // this.timings = []
         this.times = []
     }
 
