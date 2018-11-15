@@ -37,7 +37,7 @@ class Game {
             .then(() => this.renderLevel1())
     }
 
-     static countDownTimer(number, imgIndexes) {
+    static countDownTimer(number, imgIndexes) {
         let countDown = number
         document.getElementById('seconds').innerText = countDown
         // switch 
@@ -53,14 +53,14 @@ class Game {
         }, 1000)
         // setTimeout(() => clearInterval(handle), number * 1000)
     }
-  
 
-    static gridDataFunction () {
+
+    static gridDataFunction() {
         const gridData = []
         document.querySelectorAll('.grid-box').forEach((gridBox, index) => {
             const gridBoxObj = {}
             gridBoxObj.gridBox = gridBox
-            gridBoxObj.imgUrl = State.images16[index].urls.regular 
+            gridBoxObj.imgUrl = State.images16[index].urls.regular
             gridBoxObj.imgId = State.images16[index].id
             gridData.push(gridBoxObj)
         })
@@ -168,34 +168,20 @@ class Game {
             listData.push(listBoxObj)
         })
         State.listData = [...listData]
-        
+
     }
 
     static renderPhotoList() {
         State.startTime = Date.now()
-        const array = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
+        const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
         array.forEach(item => {
-            const listBoxItem = {...State.listData[item]}
+            const listBoxItem = { ...State.listData[item] }
             const listEl = document.querySelector(`#list-box-${item}`)
             listEl.style.background = `url(${listBoxItem.imgUrl}) no-repeat center center`
             listEl.style.backgroundSize = 'cover'
             listEl.setAttribute('data-id', State.listData[item].imgId)
         })
     }
-
-    // static renderPhotoList() {
-    //     const randomizedImagesUrls = this.shuffleImages(State.images32)
-    //     const listBoxes = document.querySelectorAll('.list-box')
-    //     listBoxes.forEach((listBox, index) => {
-    //         // const listBoxImage = listBoxes[index].querySelector('img')
-    //         // listBoxImage.src = randomizedImagesUrls[index]
-    //         listBoxes[index].style.background = `url(${randomizedImagesUrls[index]}) no-repeat center center`;
-    //         listBoxes[index].style.backgroundSize = 'cover'
-    //     })
-    //     // this.listDataFunction()
-    //     // setTimeout(() => {this.clearPhotoList()}, 5000)
-    //     // this.renderLevel2()
-    // }
 
     static clearPhotoList() {
         const listBoxes = document.querySelectorAll('.list-box')
@@ -221,27 +207,31 @@ class Game {
     }
 
     static matchImage(event) {
-        if (State.selectedData.find(id => id === event.target.dataset.id)){
+        if (State.selectedData.find(id => id === event.target.dataset.id)) {
             console.log('WOOOOO')
             // delete the id from State.selectedData
             State.selectedData.splice(State.selectedData.indexOf(event.target.dataset.id), 1)
             // change background of clicked item in list to green
             // show image on the grid
             // check value of counter (counter = State.selectedData.length) ---- if 0, render next level, if >0 continue level
-            if (State.selectedData.length === 0){
-                State.currentLevel += 1
+            if (State.selectedData.length === 0) {
                 State.finishTime = Date.now()
                 this.timeCalculator()
                 this.clearLevel()
                 this.clearPhotoList()
-                if (State.currentLevel === 2){
+                if (State.currentLevel === 1) {
+                    State.currentLevel += 1
                     this.renderLevel2()  // need to change this to be dynamic not hard coding the specific level -- use State.currentLevel
-                } else if (State.currentLevel === 3) {
+                } else if (State.currentLevel === 2) {
+                    State.currentLevel += 1
                     this.renderLevel3()
-                } else if (State.currentLevel === 4) {
+                } else if (State.currentLevel === 3) {
+                    State.currentLevel += 1
                     this.renderLevel4()
                 } else {
+
                     console.log('GAME OVER')
+                    this.createGameObject()
                     //call create game method
                     // link to summary page
                 }
@@ -250,24 +240,38 @@ class Game {
             console.log("no")
             // change background of clicked item in list to red
             // add a penalty point to State.penalties
-            State.penalties += 1
+            State.overallPenalties += 1
+
+            if (State.currentLevel === 1) {
+                State.penalties1 += 1
+
+            } else if (State.currentLevel === 2) {
+                State.penalties2 += 1
+
+            } else if (State.currentLevel === 3) {
+                State.penalties1 += 1
+
+            } else if (State.currentLevel === 4) {
+                State.penalties1 += 1
+            }
+
         }
-        
+
     }
 
     static timeCalculator() {
-        const time = (State.finishTime - State.startTime) / 1000 
+        const time = (State.finishTime - State.startTime) / 1000
         State.times.push(time)
-        if (State.currentLevel === 2){
+        if (State.currentLevel === 1) {
             State.level1Time = time
             State.overallTime += time
-        } else if (State.currentLevel === 3) {
+        } else if (State.currentLevel === 2) {
             State.level2Time = time
             State.overallTime += time
-        } else if (State.currentLevel === 4) {
+        } else if (State.currentLevel === 3) {
             State.level3Time = time
             State.overallTime += time
-        } else if (State.currentLevel === 5) {
+        } else if (State.currentLevel === 4) {
             State.level4Time = time
             State.overallTime += time
         } else {
@@ -276,15 +280,40 @@ class Game {
     }
 
 
+
     static createGameObject() {
         const game = {
             user_id: State.userId,
             points: State.points,
             time: State.overallTime,
-            time1: State.level1Time
+            points: State.points,
+            level: State.currentLevel,
+            penalties: State.overallPenalties,
+            penalties1: State.penalties1,
+            penalties2: State.penalties2,
+            penalties3: State.penalties3,
+            penalties4: State.penalties4,
+            time1: State.level1Time,
+            time2: State.level2Time,
+            time3: State.level3Time,
+            time4: State.level4Time,
         }
-
+        console.log(game)
+        createGame(game)
     }
 
 }
 
+    // static renderPhotoList() {
+    //     const randomizedImagesUrls = this.shuffleImages(State.images32)
+    //     const listBoxes = document.querySelectorAll('.list-box')
+    //     listBoxes.forEach((listBox, index) => {
+    //         // const listBoxImage = listBoxes[index].querySelector('img')
+    //         // listBoxImage.src = randomizedImagesUrls[index]
+    //         listBoxes[index].style.background = `url(${randomizedImagesUrls[index]}) no-repeat center center`;
+    //         listBoxes[index].style.backgroundSize = 'cover'
+    //     })
+    //     // this.listDataFunction()
+    //     // setTimeout(() => {this.clearPhotoList()}, 5000)
+    //     // this.renderLevel2()
+    // }

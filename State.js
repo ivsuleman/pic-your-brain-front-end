@@ -10,7 +10,11 @@ class State {
         this.listData = []
         this.selectedData = []
         this.currentLevel = 1
-        this.penalties = 0
+        this.overallPenalties = 0
+        this.penalties1 = 0
+        this.penalties2 = 0
+        this.penalties3 = 0
+        this.penalties4 = 0
         this.currentLevelIndexesArray = []
         this.level1Time = 0
         this.level2Time = 0
