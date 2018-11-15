@@ -1,0 +1,22 @@
+{
+  "name": "pic-your-brain-front-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sirloinus/pic-your-brain-front-end.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sirloinus/pic-your-brain-front-end/issues"
+  },
+  "homepage": "https://github.com/sirloinus/pic-your-brain-front-end#readme",
+  "dependencies": {
+    "animate.css": "^3.7.0"
+  }
+}

@@ -127,11 +127,12 @@ p {
 #game-container {
     display: grid;
     grid-template-columns: 3fr 1fr;
-    padding: 0 5%;
+    max-width: 1400px;
+    margin: 0 auto;
     height: 80vh;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
     #game-container {
         grid-template-columns: 1fr;
     }
@@ -154,3 +155,11 @@ p {
     display: block;
     font-size: 4.5rem;
   }
+
+/* .wrong {
+    animation-iteration-count: infinite
+} */
+
+.correct {
+    
+}
