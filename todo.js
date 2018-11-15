@@ -1,6 +1,6 @@
 // IRFAN summary page
 
-// AMALIE  add points logic
+// ********COMPLETED*******  AMALIE  add points logic 
 
 // style web page
 

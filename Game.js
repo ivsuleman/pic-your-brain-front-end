@@ -5,10 +5,10 @@ class Game {
             <button id="start-button">Start Game!</button>
         `
         const startEl = rootEl.querySelector('#start-button')
-        startEl.addEventListener('click', (event) => this.beginGameListener(event))
+        startEl.addEventListener('click', (event) => this.beginGame(event))
     }
 
-    static beginGameListener(event) {
+    static beginGame(event) {
         event.preventDefault()
         rootEl.innerHTML = `
             <h1>LOGO WILL GO HERE</h1>
@@ -24,11 +24,17 @@ class Game {
                 <div id="photo-list">
                     ${Array(32).fill().map((_, idx) => `<div id='list-box-${idx}' class="list-box"></div>`).join('')}
                 </div>
-            </div>   
+            </div>
+            <button id="exit-btn">Exit Game</button>   
             `
         const photoListEl = document.querySelector('#photo-list')
         photoListEl.addEventListener('click', event => {
             this.matchImage(event)
+        })
+
+        const exitGameButton = document.querySelector('#exit-btn')
+        exitGameButton.addEventListener('click', event => {
+            this.exitGame()
         })
 
         this.getImages(State.category)
@@ -52,7 +58,6 @@ class Game {
         }, 1000)
         // setTimeout(() => clearInterval(handle), number * 1000)
     }
-
 
     static gridDataFunction() {
         const gridData = []
@@ -109,7 +114,6 @@ class Game {
         this.renderLevel(imgIndexes)
         this.countDownTimer(1, imgIndexes)
     }
-
 
     static renderLevel2() {
         const imgIndexes = [0, 1, 4, 5]
@@ -201,12 +205,16 @@ class Game {
 
             if (State.selectedData.length === 0) {
                 State.finishTime = Date.now()
-                this.timeCalculator()
-                this.clearLevel()
-                this.clearPhotoList()
+
+                setTimeout(() => {
+                    this.timeCalculator()
+                    this.clearLevel()
+                    this.clearPhotoList()
+                }, 2000)
+
                 if (State.currentLevel === 1) {
                     State.currentLevel += 1
-                    this.renderLevel2()  
+                    this.renderLevel2()
                 } else if (State.currentLevel === 2) {
                     State.currentLevel += 1
                     this.renderLevel3()
@@ -217,7 +225,6 @@ class Game {
 
                     console.log('GAME OVER')
                     this.createGameObject()
-                    // TODO: call create game method
                     // TODO: link to summary page
                 }
             }
@@ -268,6 +275,7 @@ class Game {
     }
 
     static createGameObject() {
+        this.calculatePoints()
         const game = {
             user_id: State.userId,
             points: State.points,
@@ -286,6 +294,17 @@ class Game {
         }
         console.log(game)
         createGame(game)
+    }
+
+    static calculatePoints() {
+        const points = State.overallTime * State.overallPenalties
+        State.points = points
+    }
+
+    static exitGame() {
+        console.log('EXIT!')
+        this.createGameObject()
+        // TODO: show summary page
     }
 
 }
