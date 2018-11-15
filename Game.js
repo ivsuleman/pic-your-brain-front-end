@@ -1,17 +1,38 @@
 class Game {
+
     static render() {
         rootEl.innerHTML = `
-            <h1>LOGO WILL GO HERE</h1>
-            <button id="start-button">Start Game!</button>
+            <div id ="logo"><h1>Pic your brain</h1></div> <br>
+            <div id='catg-img'></div> <br>
+            <div id='instructions'>Remember the image before the countdown ends.</div>
+            <div id='instructions'>Find and select the correct image from the list as fast as you can.</div>
+            <div id='instructions'>Incorrect clicks and slowness will give your penalty points!</div>
+            <br>
+            <button class="nav-button" id="start-button">Start Game!</button> 
+            <button class="nav-button" id="cat-menu-btn">Back to Category Menu</button>
         `
-        const startEl = rootEl.querySelector('#start-button')
-        startEl.addEventListener('click', (event) => this.beginGame(event))
+        this.renderCategoryImg()
+        
+        document.addEventListener('click', event => {
+            if (event.target.id === 'start-button'){
+                this.beginGame(event)
+            }
+            if (event.target.id === 'cat-menu-btn'){
+                Intro.render()
+            }
+        })
+    }
+
+    static renderCategoryImg() {
+        const catgImgEl = document.querySelector('#catg-img')
+        catgImgEl.id = State.categoryId
+        catgImgEl.classList.add('large')
     }
 
     static beginGame(event) {
         event.preventDefault()
         rootEl.innerHTML = `
-            <h1>LOGO WILL GO HERE</h1>
+            <div id ="logo"><h1>Pic your brain</h1></div>
             <div class="container-countdown">
                 <ul>
                     <li><span id="seconds"></span>Seconds</li>
