@@ -1,6 +1,6 @@
-// summary page
+// IRFAN summary page
 
-// add points logic
+// AMALIE  add points logic
 
 // style web page
 
@@ -10,6 +10,10 @@
 
 // change timer times from 1second etc
 
-// highlight name-input on 1st page
+// IRFAN highlight name-input on 1st page
 
-// validation on 1st page
+// IRFAN validation on 1st page
+
+// AMALIE  quit button available during game
+
+// start button page add category image and basic instructions
