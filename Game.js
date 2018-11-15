@@ -107,7 +107,7 @@ class Game {
         const imgIndexes = [0]
         State.currentLevelIndexesArray = [...imgIndexes]
         this.renderLevel(imgIndexes)
-        this.countDownTimer(5, imgIndexes)
+        this.countDownTimer(1, imgIndexes)
 
         // TODO: once image has rendered to page start count down (3 seconds) then turn image white
         // firstBoxEl.style.background = 'white'
@@ -121,6 +121,7 @@ class Game {
         const imgIndexes = [0, 1, 4, 5]
         State.currentLevelIndexesArray = [...imgIndexes]
         this.renderLevel(imgIndexes)
+        this.countDownTimer(1, imgIndexes)
         // TODO: once images have rendered to page start count down (10 seconds) then turn images white
         // this.clearLevel(imgIndexes)
         // TODO: once time is 0 trigger renderPhotoList
@@ -133,6 +134,7 @@ class Game {
         const imgIndexes = [0, 1, 2, 4, 5, 6, 8, 9, 10]
         State.currentLevelIndexesArray = [...imgIndexes]
         this.renderLevel(imgIndexes)
+        this.countDownTimer(1, imgIndexes)
         // TODO: once images have rendered to page start count down (10 seconds) then turn images white
         // this.clearLevel(imgIndexes)
         // TODO: once time is 0 trigger renderPhotoList
@@ -144,6 +146,7 @@ class Game {
         const imgIndexes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
         State.currentLevelIndexesArray = [...imgIndexes]
         this.renderLevel(imgIndexes)
+        this.countDownTimer(1, imgIndexes)
         // TODO: once images have rendered to page start count down (10 seconds) then turn images white
         // this.clearLevel(imgIndexes)
         // TODO: once time is 0 trigger renderPhotoList
@@ -231,7 +234,17 @@ class Game {
                 this.timeCalculator()
                 this.clearLevel()
                 this.clearPhotoList()
-                this.renderLevel2()  // need to change this to be dynamic not hard coding the specific level -- use State.currentLevel
+                if (State.currentLevel === 2){
+                    this.renderLevel2()  // need to change this to be dynamic not hard coding the specific level -- use State.currentLevel
+                } else if (State.currentLevel === 3) {
+                    this.renderLevel3()
+                } else if (State.currentLevel === 4) {
+                    this.renderLevel4()
+                } else {
+                    console.log('GAME OVER')
+                    //call create game method
+                    // link to summary page
+                }
             }
         } else {
             console.log("no")
@@ -245,7 +258,32 @@ class Game {
     static timeCalculator() {
         const time = (State.finishTime - State.startTime) / 1000 
         State.times.push(time)
-        State.level1Time = time
+        if (State.currentLevel === 2){
+            State.level1Time = time
+            State.overallTime += time
+        } else if (State.currentLevel === 3) {
+            State.level2Time = time
+            State.overallTime += time
+        } else if (State.currentLevel === 4) {
+            State.level3Time = time
+            State.overallTime += time
+        } else if (State.currentLevel === 5) {
+            State.level4Time = time
+            State.overallTime += time
+        } else {
+            console.log('no time')
+        }
+    }
+
+
+    static createGameObject() {
+        const game = {
+            user_id: State.userId,
+            points: State.points,
+            time: State.overallTime,
+            time1: State.level1Time
+        }
+
     }
 
 }
