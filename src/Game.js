@@ -2,7 +2,6 @@ class Game {
 
     static render() {
         rootEl.innerHTML = `
-
         <div class="pg-top">
             <div id ="logo">
                 <h1>Pic your brain</h1>
@@ -10,9 +9,7 @@ class Game {
         </div>
 
         <div class="pg-middle">
-            <div class="pg-image">
-                <img src ="./images/landscape.jpeg"
-            </div>
+            <div class="pg-image" id='catg-img'></div>
 
             <div class="pg-content">
                
@@ -23,8 +20,8 @@ class Game {
                     <p>4. The aim is to have the lowest points, indicating accuracy and speed. Good Luck!</p>
                 </div>
                 <div class="pg-buttons">
-                    <button class="pg-buttons-inst"><CHOOSE A DIFFERENT CATEGORY</button>
-                    <button class="pg-buttons-inst">START THE GAME</button>
+                    <button class="pg-buttons-inst nav-button" id="start-button">START THE GAME</button>
+                    <button class="pg-buttons-inst nav-button" id="cat-menu-btn">CHOOSE A DIFFERENT CATEGORY</button>
                 </div>
             </div>
         </div>
@@ -68,7 +65,7 @@ class Game {
                     ${Array(32).fill().map((_, idx) => `<div id='list-box-${idx}' class="list-box"></div>`).join('')}
                 </div>
             </div>
-            <button id="exit-btn">Exit Game</button>   
+            <button class="nav-button" id="exit-btn">Exit Game</button>   
             `
         const photoListEl = document.querySelector('#photo-list')
         photoListEl.addEventListener('click', event => {

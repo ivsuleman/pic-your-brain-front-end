@@ -11,10 +11,13 @@ body {
 #category-container,
 #title h2 {
     text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-weight: 500%;
+    font-size: 300%
 }
 
 p {
-    font-size: x-large;
+    font-size: 90%;
 }
 
 #form input {
@@ -22,7 +25,8 @@ p {
     max-width: 90%;
     height: 50px;
     text-align: center;
-    font-size: small;
+    font-family: 'Amatic SC', cursive;
+    font-size: 60%;
     border-radius: 10px;
 }
 
@@ -40,6 +44,7 @@ p {
 }
 
 #instructions {
+    font-family: 'Amatic SC', cursive;
     max-width: 90%;
     text-align: center;
     margin: 0 auto;
@@ -47,6 +52,7 @@ p {
     margin-right: 30%;
     padding: 10px;
     border-radius: 10px;
+    font-size: 125%;
 }
 
 #img-1 {
@@ -126,11 +132,14 @@ p {
 }
 
 .nav-button {
+    font-family: 'Amatic SC', cursive;
     width: 30vw;
     margin-left: 35%;
     margin-right: 35%;
     padding: 10px;
     border-radius: 10px;
+    font-size: 110%;
+    font-weight: bolder;
 }
 
 #photo-list,
@@ -175,6 +184,7 @@ p {
 .container-countdown {
     color: #333;
     text-align: center;
+    font-family: 'Amatic SC', cursive;
 }
 
 li {

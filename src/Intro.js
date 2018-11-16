@@ -3,7 +3,7 @@ class Intro {
         rootEl.innerHTML = `
             <div id ="logo">
                 <h1>Pic your brain</h1>
-            </div> <br>
+            </div>
             <div id="form">
                 <form id='username-form'>
                     <input id='name-input' placeholder='Type Your Name And Choose A Category Below'/>
