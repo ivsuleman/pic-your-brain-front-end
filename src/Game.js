@@ -2,11 +2,6 @@ class Game {
 
     static render() {
         rootEl.innerHTML = `
-        <div class="pg-top">
-            <div id ="logo">
-                <h1>Pic your brain</h1>
-            </div>
-        </div>
 
         <div class="pg-middle">
             <div class="pg-image" id='catg-img'></div>
