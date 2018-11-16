@@ -16,7 +16,7 @@
 
 // ****COMPLETED******  AMALIE  quit button available during game
 
-// start button page add category image and basic instructions
+// ****COMPLETED****** start button page add category image and basic instructions
 
 // not gain penalties for clicking correct one 
 

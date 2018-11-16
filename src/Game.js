@@ -25,10 +25,6 @@ class Game {
                 </div>
             </div>
         </div>
-
-        <div class="bottom">
-            <h4>Footer</h4>
-        </div>
         `
         this.renderCategoryImg()
 
