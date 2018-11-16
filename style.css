@@ -2,8 +2,15 @@
     box-sizing: border-box;
 }
 
-#logo h1, #form, #category-container {
-    text-align: center
+body {
+    margin: 0;
+}
+
+#logo h1,
+#form,
+#category-container,
+#title h2 {
+    text-align: center;
 }
 
 p {
@@ -16,13 +23,13 @@ p {
     height: 50px;
     text-align: center;
     font-size: small;
-    border-radius: 10px
+    border-radius: 10px;
 }
 
 #category-container {
     display: grid;
     grid-template-columns: 1fr;
-    height: 80vh
+    height: 80vh;
 }
 
 #category-grid {
@@ -44,47 +51,47 @@ p {
 
 #img-1 {
     background: url('./images/landscape.jpeg') no-repeat center center;
-    background-size: cover
+    background-size: cover;
 }
 
 #img-2 {
     background: url('./images/animals.jpeg') no-repeat center center;
-    background-size: cover
+    background-size: cover;
 }
 
 #img-3 {
     background: url('./images/food.jpeg') no-repeat center center;
-    background-size: cover
+    background-size: cover;
 }
 
 #img-4 {
     background: url('./images/roads.jpeg') no-repeat center center;
-    background-size: cover
+    background-size: cover;
 }
 
 #img-5 {
     background: url('./images/trees.jpeg') no-repeat center center;
-    background-size: cover
+    background-size: cover;
 }
 
 #img-6 {
     background: url('./images/coral.jpeg') no-repeat center center;
-    background-size: cover
+    background-size: cover;
 }
 
 #img-7 {
     background: url('./images/texture.jpeg') no-repeat center center;
-    background-size: cover
+    background-size: cover;
 }
 
 #img-8 {
-    background: url('./images/art.jpeg') no-repeat center center
-    ;background-size: cover
+    background: url('./images/art.jpeg') no-repeat center center;
+    background-size: cover;
 }
 
 #img-9 {
     background: url('./images/cars.jpeg') no-repeat center center;
-    background-size: cover
+    background-size: cover;
 }
 
 /* .rounded {
@@ -100,8 +107,7 @@ p {
 
 .category-box {
     color: white;
-    border-radius: 10px
-    
+    border-radius: 10px;
 }
 
 .category-box p {
@@ -111,12 +117,12 @@ p {
     height: 100%;
     width: 100%;
     margin: 0;
-    background-color: rgba(0,0,0,0.0.1);
+    background-color: rgba(0, 0, 0, 0.0.1);
     transition: .3s;
 }
 
 .category-box p:hover {
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .nav-button {
@@ -124,10 +130,11 @@ p {
     margin-left: 35%;
     margin-right: 35%;
     padding: 10px;
-    border-radius: 10px
+    border-radius: 10px;
 }
 
-#photo-list, #photo-grid {
+#photo-list,
+#photo-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
@@ -139,8 +146,9 @@ p {
     position: relative;
 } */
 
-.list-box, .grid-box {
-    border-radius: 10px
+.list-box,
+.grid-box {
+    border-radius: 10px;
 }
 
 /* .image-grid-box {
@@ -167,20 +175,20 @@ p {
 .container-countdown {
     color: #333;
     text-align: center;
-  }
+}
 
-  li {
+li {
     display: inline-block;
     font-size: 1.5em;
     list-style-type: none;
     padding: 1em;
     text-transform: uppercase;
-  }
-  
-  li span {
+}
+
+li span {
     display: block;
     font-size: 4.5rem;
-  }
+}
 
 /* .wrong {
     animation-iteration-count: infinite
@@ -190,3 +198,61 @@ p {
     
 } */
 
+
+
+
+
+
+
+
+
+
+.pg-top {
+    height: 10vh;
+}
+
+.pg-middle {
+    width: 100vw;
+    height: 80vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.pg-bottom {
+    height: 10vh;
+}
+
+.pg-image {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+
+
+.pg-image img {
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.pg-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2)
+}
+
+.pg-buttons-inst {
+    margin: 20px;
+    width: 500px;
+    height: 30px;
+}
