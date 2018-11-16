@@ -14,7 +14,12 @@ body {
     text-align: center;
     font-family: 'Amatic SC', cursive;
     font-weight: 500%;
-    font-size: 300%
+    font-size: 300%;
+    margin: 0;
+}
+
+#logo h1 {
+    line-height: 10vh;
 }
 
 p {
@@ -34,7 +39,7 @@ p {
 #category-container {
     display: grid;
     grid-template-columns: 1fr;
-    height: 80vh;
+    height: 70vh;
 }
 
 #category-grid {
@@ -212,13 +217,23 @@ li span {
 
 .pg-top {
     height: 10vh;
+    position: relative;
+}
+
+.pg-top p {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    line-height: 10vh;
+    margin: 0;
 }
 
 .pg-middle {
     width: 100vw;
-    height: 80vh;
+    height: 0vh;
     overflow: hidden;
     position: relative;
+    height: 80vh
 }
 
 .pg-bottom {
@@ -267,4 +282,11 @@ li span {
     font-family: 'Amatic SC', cursive;
     font-size: 200%;
     text-align: center;
+    line-height: 1;
+    height: 100;
+}
+
+#seconds {
+    font-family: 'Amatic SC', cursive;
+    font-size: 200%
 }
