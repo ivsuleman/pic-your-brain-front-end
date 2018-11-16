@@ -5,12 +5,10 @@ class Summary {
         const accuracy = Math.round((30 / (State.overallPenalties + 30)) * 100)
         const speed = Math.round(State.overallTime);
 
+        const footer = document.querySelector('.bottom')
+        footer.innerText = 'Made by Irfan and Amalie'
+
         rootEl.innerHTML = `
-
-            <div id="title">
-                <h1>${State.userName}'s Game Stats</h1>
-            </div>
-
             <div id="player-stats">
                 <div id="Points">
                     <h3>${points} Points Scored</h3>
@@ -21,21 +19,6 @@ class Summary {
                 <div id="Speed">
                     <h3>${speed} seconds Speed</h3>
                 </div>
-            </div>
-
-            <div id="title">
-                <h2>Leaderboard</h2>
-            </div>
-
-            <div id="leaderboard">
-                <table id="table">
-                    <tr>
-                        <th>Name</th>
-                        <th colspan="1">Points</th>
-                        <th colspan="1">Accuracy (%)</th>
-                        <th colspan="1">Speed (seconds)</th>
-                    </tr>
-                </table>
             </div>
 
             `
