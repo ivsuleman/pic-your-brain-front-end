@@ -248,12 +248,15 @@ class Game {
                 // }, 2000)
 
                 if (State.currentLevel === 1) {
+                    this.timeCalculator()
                     State.currentLevel += 1
                     this.renderLevel2()
                 } else if (State.currentLevel === 2) {
+                    this.timeCalculator()
                     State.currentLevel += 1
                     this.renderLevel3()
                 } else if (State.currentLevel === 3) {
+                    this.timeCalculator()
                     State.currentLevel += 1
                     this.renderLevel4()
                 } else {
@@ -283,10 +286,10 @@ class Game {
                 State.penalties2 += 1
 
             } else if (State.currentLevel === 3) {
-                State.penalties1 += 1
+                State.penalties3 += 1
 
             } else if (State.currentLevel === 4) {
-                State.penalties1 += 1
+                State.penalties4 += 1
             }
         }
 
