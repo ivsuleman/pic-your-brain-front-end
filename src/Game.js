@@ -2,7 +2,7 @@ class Game {
 
     static render() {
         rootEl.innerHTML = `
-            <div id ="logo"><h1>Pic your brain</h1></div> <br>
+            <div id ="logo"><h1>Pic your brain</h1></div>
             <div id='catg-img'></div> <br>
             <div id='instructions'>Remember the image before the countdown ends.</div>
             <div id='instructions'>Find and select the correct image from the list as fast as you can.</div>
@@ -46,7 +46,7 @@ class Game {
                     ${Array(32).fill().map((_, idx) => `<div id='list-box-${idx}' class="list-box"></div>`).join('')}
                 </div>
             </div>
-            <button id="exit-btn">Exit Game</button>   
+            <button class="nav-button" id="exit-btn">Exit Game</button>   
             `
         const photoListEl = document.querySelector('#photo-list')
         photoListEl.addEventListener('click', event => {
