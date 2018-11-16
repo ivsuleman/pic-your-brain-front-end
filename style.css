@@ -9,7 +9,8 @@ body {
 #logo h1,
 #form,
 #category-container,
-#title h2 {
+#title h2,
+#player-stats {
     text-align: center;
     font-family: 'Amatic SC', cursive;
     font-weight: 500%;
@@ -250,7 +251,7 @@ li span {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.2);    
+    background-color: rgba(0, 0, 0, 0.2);
     font-family: 'Amatic SC', cursive;
     font-size: 200%
 }
