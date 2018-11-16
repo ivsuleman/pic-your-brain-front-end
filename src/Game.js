@@ -71,13 +71,16 @@ class Game {
 
     static countDownTimer(number, imgIndexes) {
         let countDown = number
+        console.log(number)
         document.getElementById('seconds').innerText = `${countDown} Seconds`
         const IntervalHandle = setInterval(() => {
             countDown = --countDown;
             if (countDown >= 0) {
                 document.getElementById('seconds').innerText = `${countDown} Seconds`
+                console.log(countDown)
             } else {
                 clearInterval(IntervalHandle)
+                console.log('clearing')
                 this.clearLevel(imgIndexes)
                 this.renderPhotoList()
             }
@@ -124,6 +127,7 @@ class Game {
     }
 
     static renderLevel(array) {
+        this.clearPhotoList()
         array.forEach(item => {
             const gridBoxObj = { ...State.gridData[item]
             }
@@ -139,28 +143,28 @@ class Game {
         const imgIndexes = [0]
         State.currentLevelIndexesArray = [...imgIndexes]
         this.renderLevel(imgIndexes)
-        this.countDownTimer(1, imgIndexes)
+        this.countDownTimer(3, imgIndexes)
     }
 
     static renderLevel2() {
         const imgIndexes = [0, 1, 4, 5]
         State.currentLevelIndexesArray = [...imgIndexes]
         this.renderLevel(imgIndexes)
-        this.countDownTimer(1, imgIndexes)
+        this.countDownTimer(10, imgIndexes)
     }
 
     static renderLevel3() {
         const imgIndexes = [0, 1, 2, 4, 5, 6, 8, 9, 10]
         State.currentLevelIndexesArray = [...imgIndexes]
         this.renderLevel(imgIndexes)
-        this.countDownTimer(1, imgIndexes)
+        this.countDownTimer(15, imgIndexes)
     }
 
     static renderLevel4() {
         const imgIndexes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
         State.currentLevelIndexesArray = [...imgIndexes]
         this.renderLevel(imgIndexes)
-        this.countDownTimer(1, imgIndexes)
+        this.countDownTimer(20, imgIndexes)
     }
 
     static clearLevel() {
@@ -187,10 +191,10 @@ class Game {
         timer.innerText = ''
         State.startTime = Date.now()
         const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
-        // const shuffled = this.shuffle(State.listData)
+        const shuffled = this.shuffle(State.listData)
         array.forEach(item => {
-            // const listBoxItem = {...shuffled[item]}
-            const listBoxItem = { ...State.listData[item]}
+            const listBoxItem = {...shuffled[item]}
+            // const listBoxItem = { ...State.listData[item]}
             const listEl = document.querySelector(`#list-box-${item}`)
             listEl.style.background = `url(${listBoxItem.imgUrl}) no-repeat center center`
             listEl.style.backgroundSize = 'cover'
@@ -237,19 +241,22 @@ class Game {
             if (State.selectedData.length === 0) {
                 State.finishTime = Date.now()
 
-                setTimeout(() => {
-                    this.timeCalculator()
-                    this.clearLevel()
-                    this.clearPhotoList()
-                }, 2000)
+                // setTimeout(() => {
+                //     this.timeCalculator()
+                //     this.clearLevel()
+                //     this.clearPhotoList()
+                // }, 2000)
 
                 if (State.currentLevel === 1) {
+                    this.timeCalculator()
                     State.currentLevel += 1
                     this.renderLevel2()
                 } else if (State.currentLevel === 2) {
+                    this.timeCalculator()
                     State.currentLevel += 1
                     this.renderLevel3()
                 } else if (State.currentLevel === 3) {
+                    this.timeCalculator()
                     State.currentLevel += 1
                     this.renderLevel4()
                 } else {
@@ -279,10 +286,10 @@ class Game {
                 State.penalties2 += 1
 
             } else if (State.currentLevel === 3) {
-                State.penalties1 += 1
+                State.penalties3 += 1
 
             } else if (State.currentLevel === 4) {
-                State.penalties1 += 1
+                State.penalties4 += 1
             }
         }
 
@@ -338,7 +345,7 @@ class Game {
     static exitGame() {
         console.log('EXIT!')
         this.createGameObject()
-        // TODO: show summary page
+        Summary.render()
     }
 
 }
