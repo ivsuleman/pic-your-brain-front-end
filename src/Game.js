@@ -2,8 +2,6 @@ class Game {
 
     static render() {
         rootEl.innerHTML = `
-
-        <div class="pg-middle">
             <div class="pg-image" id='catg-img'></div>
 
             <div class="pg-content">
@@ -19,7 +17,6 @@ class Game {
                     <button class="pg-buttons-inst nav-button" id="cat-menu-btn">CHOOSE A DIFFERENT CATEGORY</button>
                 </div>
             </div>
-        </div>
         `
         this.renderCategoryImg()
 
@@ -42,12 +39,6 @@ class Game {
     static beginGame(event) {
         event.preventDefault()
         rootEl.innerHTML = `
-            <div id ="logo"><h1>Pic your brain</h1></div>
-            <div class="container-countdown">
-                <ul>
-                    <li><span id="seconds"></span>Seconds</li>
-                </ul>
-            </div>
             <div id="game-container">
                 <div id="photo-grid">
                     ${Array(16).fill().map((_, idx) => `<div id='grid-box-${idx}' data-id='' class="grid-box"></div>`).join('')}
@@ -55,13 +46,17 @@ class Game {
                 <div id="photo-list">
                     ${Array(32).fill().map((_, idx) => `<div id='list-box-${idx}' class="list-box"></div>`).join('')}
                 </div>
-            </div>
-            <button class="nav-button" id="exit-btn">Exit Game</button>   
+            </div>  
             `
         const photoListEl = document.querySelector('#photo-list')
         photoListEl.addEventListener('click', event => {
             this.matchImage(event)
         })
+
+        const footer = document.querySelector('.bottom')
+        // footer.style.display = 'none'
+        footer.innerText = ''
+        footer.innerHTML = '<button class="nav-button" id="exit-btn">Exit Game</button>' 
 
         const exitGameButton = document.querySelector('#exit-btn')
         exitGameButton.addEventListener('click', event => {
@@ -76,11 +71,11 @@ class Game {
 
     static countDownTimer(number, imgIndexes) {
         let countDown = number
-        document.getElementById('seconds').innerText = countDown
+        document.getElementById('seconds').innerText = `${countDown} Seconds`
         const IntervalHandle = setInterval(() => {
             countDown = --countDown;
             if (countDown >= 0) {
-                document.getElementById('seconds').innerText = countDown
+                document.getElementById('seconds').innerText = `${countDown} Seconds`
             } else {
                 clearInterval(IntervalHandle)
                 this.clearLevel(imgIndexes)
@@ -188,11 +183,14 @@ class Game {
     }
 
     static renderPhotoList() {
+        const timer = document.querySelector('#seconds')
+        timer.innerText = ''
         State.startTime = Date.now()
         const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+        // const shuffled = this.shuffle(State.listData)
         array.forEach(item => {
-            const listBoxItem = { ...State.listData[item]
-            }
+            // const listBoxItem = {...shuffled[item]}
+            const listBoxItem = { ...State.listData[item]}
             const listEl = document.querySelector(`#list-box-${item}`)
             listEl.style.background = `url(${listBoxItem.imgUrl}) no-repeat center center`
             listEl.style.backgroundSize = 'cover'
@@ -205,10 +203,6 @@ class Game {
         listBoxes.forEach((listBox, index) => {
             listBoxes[index].style.background = 'white'
         })
-    }
-
-    static shuffleImages(images) {
-        return this.shuffle(images).map(image => image.urls.small)
     }
 
     static shuffle(array) {
