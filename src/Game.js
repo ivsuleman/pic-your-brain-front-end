@@ -2,22 +2,41 @@ class Game {
 
     static render() {
         rootEl.innerHTML = `
-            <div id ="logo"><h1>Pic your brain</h1></div>
-            <div id='catg-img'></div> <br>
-            <div id='instructions'>Remember the image before the countdown ends.</div>
-            <div id='instructions'>Find and select the correct image from the list as fast as you can.</div>
-            <div id='instructions'>Incorrect clicks and slowness will give your penalty points!</div>
-            <br>
-            <button class="nav-button" id="start-button">Start Game!</button> 
-            <button class="nav-button" id="cat-menu-btn">Back to Category Menu</button>
+        <div class="pg-top">
+            <div id ="logo">
+                <h1>Pic your brain</h1>
+            </div>
+        </div>
+
+        <div class="pg-middle">
+            <div class="pg-image" id='catg-img'></div>
+
+            <div class="pg-content">
+               
+                <div id="pg-instructions">
+                    <p>1. Remember the image (on the left) before the countdown ends.</p>
+                    <p>2. Find and click on the correct image from the thumbnail images (on the right) as fast as you can.</p>
+                    <p>3. Wrong clicks and slowness will imapct your final points.</p>
+                    <p>4. The aim is to have the lowest points, indicating accuracy and speed. Good Luck!</p>
+                </div>
+                <div class="pg-buttons">
+                    <button class="pg-buttons-inst nav-button" id="start-button">START THE GAME</button>
+                    <button class="pg-buttons-inst nav-button" id="cat-menu-btn">CHOOSE A DIFFERENT CATEGORY</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom">
+            <h4>Footer</h4>
+        </div>
         `
         this.renderCategoryImg()
-        
+
         document.addEventListener('click', event => {
-            if (event.target.id === 'start-button'){
+            if (event.target.id === 'start-button') {
                 this.beginGame(event)
             }
-            if (event.target.id === 'cat-menu-btn'){
+            if (event.target.id === 'cat-menu-btn') {
                 Intro.render()
             }
         })
@@ -66,7 +85,7 @@ class Game {
 
     static countDownTimer(number, imgIndexes) {
         let countDown = number
-        document.getElementById('seconds').innerText = countDown 
+        document.getElementById('seconds').innerText = countDown
         const IntervalHandle = setInterval(() => {
             countDown = --countDown;
             if (countDown >= 0) {
@@ -120,7 +139,8 @@ class Game {
 
     static renderLevel(array) {
         array.forEach(item => {
-            const gridBoxObj = { ...State.gridData[item] }
+            const gridBoxObj = { ...State.gridData[item]
+            }
             State.selectedData.push(State.gridData[item].imgId)
             const boxEl = document.querySelector(`#grid-box-${item}`)
             boxEl.style.background = `url(${gridBoxObj.imgUrl}) no-repeat center center`
@@ -158,7 +178,9 @@ class Game {
     }
 
     static clearLevel() {
-        State.currentLevelIndexesArray.forEach(item => { document.querySelectorAll('.grid-box')[item].style.background = 'white' })
+        State.currentLevelIndexesArray.forEach(item => {
+            document.querySelectorAll('.grid-box')[item].style.background = 'white'
+        })
     }
 
     static listDataFunction() {
@@ -178,7 +200,8 @@ class Game {
         State.startTime = Date.now()
         const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
         array.forEach(item => {
-            const listBoxItem = { ...State.listData[item] }
+            const listBoxItem = { ...State.listData[item]
+            }
             const listEl = document.querySelector(`#list-box-${item}`)
             listEl.style.background = `url(${listBoxItem.imgUrl}) no-repeat center center`
             listEl.style.backgroundSize = 'cover'
@@ -188,7 +211,9 @@ class Game {
 
     static clearPhotoList() {
         const listBoxes = document.querySelectorAll('.list-box')
-        listBoxes.forEach((listBox, index) => { listBoxes[index].style.background = 'white' })
+        listBoxes.forEach((listBox, index) => {
+            listBoxes[index].style.background = 'white'
+        })
     }
 
     static shuffleImages(images) {
@@ -246,7 +271,10 @@ class Game {
 
                     console.log('GAME OVER')
                     this.createGameObject()
+
                     // TODO: link to summary page
+                    Summary.render()
+
                 }
             }
         } else {
