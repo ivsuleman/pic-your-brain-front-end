@@ -38,15 +38,18 @@ class Summary {
                 const tableEl = document.querySelector('#table');
 
                 leaderboardLocal.forEach(element => {
-                    let tableRowHTML = `
-                    <tr>
-                        <td>element.username</td>
-                        <td>element.games.points</td>
-                        <td>Math.round((30 / (element.games.penalties + 30)) * 100)</td>
-                        <td>element.games.time</td>
-                    </tr>
+                    console.log(element)
+                    const tableRoweEl = document.createElement('tr');
+                    console.log(tableRoweEl);
+                    const pen = element.games[0].penalties
+                    const penalties = Math.round(30 / (pen + 30) * 100);
+                    tableRoweEl.innerHTML = `
+                        <td>${element.username}</td>
+                        <td>${element.games[0].points}</td>
+                        <td>${penalties}</td>
+                        <td>${element.games[0].time}</td>
                     `
-                    tableRoweEl = document.createElement(tableRowHTML);
+                    console.log(tableRoweEl);
                     tableEl.appendChild(tableRoweEl);
 
                 });
