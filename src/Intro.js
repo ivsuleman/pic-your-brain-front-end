@@ -27,7 +27,7 @@ class Intro {
   static setUserListener(event) {
     event.preventDefault();
 
-    const url = "https://pic-ur-brain.herokuapp.com/api/v1/users";
+    const url = "https://pic-ur-brain-api.herokuapp.com/api/v1/users";
     let inputEl = rootEl.querySelector("#name-input");
     const body = { username: inputEl.value };
     const formEl = rootEl.querySelector("#username-form");

@@ -25,7 +25,7 @@ class Summary {
   }
 
   static renderLeaderboard() {
-    const url = "https://pic-ur-brain.herokuapp.com/api/v1/users";
+    const url = "https://pic-ur-brain-api.herokuapp.com/api/v1/users";
     let leaderboardLocal;
 
     fetch(url)
