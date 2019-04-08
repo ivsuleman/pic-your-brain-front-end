@@ -1,6 +1,6 @@
 class Intro {
-    static render() {
-        rootEl.innerHTML = `
+  static render() {
+    rootEl.innerHTML = `
             <div id="form">
                 <form id='username-form'>
                     <input id='name-input' placeholder='Type Your Name And Choose A Category Below'/>
@@ -19,32 +19,35 @@ class Intro {
                     <div id="img-9" class="category-box"><p id="classic cars">Classic Cars</p></div>
                 </div>
             </div>
-        `
-        const categoryEl = rootEl.querySelector('#category-grid')
-        categoryEl.addEventListener('click', this.setUserListener)
-    }
+        `;
+    const categoryEl = rootEl.querySelector("#category-grid");
+    categoryEl.addEventListener("click", this.setUserListener);
+  }
 
-    static setUserListener(event) {
-        event.preventDefault()
+  static setUserListener(event) {
+    event.preventDefault();
 
-        const url = 'http://localhost:3000/api/v1/users';
-        let inputEl = rootEl.querySelector('#name-input')
-        const body = { username: inputEl.value };
-        const formEl = rootEl.querySelector('#username-form')
+    const url = "https://pic-ur-brain.herokuapp.com/api/v1/users";
+    let inputEl = rootEl.querySelector("#name-input");
+    const body = { username: inputEl.value };
+    const formEl = rootEl.querySelector("#username-form");
 
-        fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify(body),
-        })
-            .then((response) => response.json())
-            .then(user => {
-                State.userName = user.username
-                State.userId = user.id
-                State.category = event.target.id
-                State.categoryId = event.target.parentElement.id
-                formEl.reset()
-                Game.render()
-            });
-    }
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(body)
+    })
+      .then(response => response.json())
+      .then(user => {
+        State.userName = user.username;
+        State.userId = user.id;
+        State.category = event.target.id;
+        State.categoryId = event.target.parentElement.id;
+        formEl.reset();
+        Game.render();
+      });
+  }
 }
